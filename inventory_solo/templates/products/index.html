@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Products</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Part Number</th>
+    <th>Category</th>
+    <th>Stock Quantity</th>
+    <th>Reorder Level</th>
+    <th>Unit Multiple</th>
+    <th>Cost</th>
+    <th>Selling Price</th>
+  </tr>
+  {% for product in products %}
+  <tr>
+    <td>{{ product.name }}</td>
+    <td>{{ product.description }}</td>
+    <td>{{ product.part_number }}</td>
+    <td>{{ product.category }}</td>
+    <td class="centre">{{ product.stock_qty }}</td>
+    <td class="centre">{{ product.reorder_level }}</td>
+    <td class="centre">{{ product.unit_multiple }}</td>
+    <td class="right">{{ '%0.2f' |format(product.cost|float) }}</td>
+    <td class="right">{{ '%0.2f' |format(product.selling_price|float) }}</td>
+    <td><a href="/products/{{product.id}}/edit">Edit</a></td>
+    <td>
+      <form action="/products/{{ product.id }}/delete" method="POST">
+        <button><b>Delete</b></button>
+      </form>
+    </td>
+  {% endfor %}
+  </tr>
+  <tr>
+    <td>
+      <form action="/products/add" method="POST">
+        <input type="text" id = "name" size="30" name="name">
+    </td>
+    <td>
+        <input type="text" id = "description" size="50" name="description">
+    </td>
+    <td>
+        <input type="text" id = "part_number" name="part_number">
+     </td>
+    <td>
+        <input type="text" id = "category" size="15" name="category">
+     </td>
+    <td>
+        <input type="text" id = "stock_qty" size="8" name="stock_qty">
+    </td>
+    <td>
+        <input type="text" id = "reorder_level" size="8" name="reorder_level">
+    </td>
+    <td>
+        <input type="text" id = "unit_multiple" size="8" name="unit_multiple">
+    </td>
+    <td>
+        <input type="text" id = "cost" size="10" name="cost">
+    </td>
+    <td>
+        <input type="text" id = "selling_price" size="10" name="selling_price">
+    </td>
+    <td>
+        <button type="submit"><b>Add</b></button>
+      </form>
+    </td>
+  </tr>
+</table>
+{% endblock %}

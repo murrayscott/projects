@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Manufacturers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Contact</th>
+    <th>Telephone</th>
+    <th>Email
+    <th>Website</th>
+  </tr>
+  {% for manufacturer in manufacturers %}
+  <tr>
+    <td>{{ manufacturer.name }}</td>
+    <td>{{ manufacturer.address }}</td>
+    <td>{{ manufacturer.contact }}</td>
+    <td>{{ manufacturer.telephone }}</td>
+    <td>{{ manufacturer.email }}</td>
+    <td><a href="{{ manufacturer.website }}">{{ manufacturer.website }}</a></td>
+    <td><a href="/manufacturers/{{manufacturer.id}}/edit">Edit</a></td>
+    <td>
+      <form action="/manufacturers/{{manufacturer.id}}/delete" method="POST">
+        <button><b>Delete</b></button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td>
+      <form action="/manufacturers/add" method="POST">
+        <input type="text" id = "name" size="25" name="name">
+    </td>
+    <td>
+        <input type="text" id = "address" size="55" name="address">
+    </td>
+    <td>
+        <input type="text" id = "contact" name="contact">
+    </td>
+    <td>
+        <input type="text" id = "telephone" size="15" name="telephone">
+    </td>
+    <td>
+        <input type="email" id = "email" size="25" name="email">
+    </td>
+    <td>
+        <input type="text" id = "website" size="25" name="website">
+    </td>
+    <td>
+        <button type="submit"><b>Add</b></button>
+      </form>
+    </td>
+  </tr>
+</table>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory Controller</title>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  
+</head>
+<body>
+
+  <header>
+    <h1> Pick a Corner Grocery </h1>
+    <hr>
+  </header>
+  <main>
+  <nav>
+      <h3>
+        <a href="/">Home</a>
+        <a href="/manufacturers">Manufacturers</a>
+        <a href="/products">Products</a>
+        <a href="/suppliers">Suppliers</a>
+        <a href="/inventory">Inventory</a>
+        <a href="/sitemap">Sitemap</a>
+      </h3>
+
+  </nav>
+  <section id="content">
+      {% block content %}
+
+      {% endblock%}
+  </section>
+  </main>
+  <footer>
+
+  </footer>
+
+
+</body>
+</html>
